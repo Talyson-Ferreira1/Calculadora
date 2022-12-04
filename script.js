@@ -7,7 +7,7 @@ containerCalculadora.addEventListener("click", (botaoClicado)=>{
 
     if(botaoClicado.target.classList == "display" || botaoClicado.target.classList == "container") return
 
-    let caracter = botaoClicado.target.innerHTML;
+    let caracter = botaoClicado.target.innerText;
     
     tratamentoDosOperadores(caracter)
     
@@ -19,26 +19,26 @@ function tratamentoDosOperadores(numero){
         case 'DEL':
             
             numero = ""
-            display.innerHTML =  display.innerHTML.substring(0, display.innerHTML.length -1);  
+            display.innerText =  display.innerText.substring(0, display.innerText.length -1);  
             return 
                                   
         case 'AC':
             
             numero = ""
-            display.innerHTML = ""
+            display.innerText = ""
             return 
       
         case '=':
 
             numero = ""
-            calcularOperacao(display.innerHTML)
+            calcularOperacao(display.innerText)
             return
 
         default:
             break;
     } 
 
-    if(display.innerHTML.length >= 19) return
+    if(display.innerText.length >= 19) return
 
     numberLowerCase();
     mostrarNoDisplay(numero);
@@ -46,22 +46,22 @@ function tratamentoDosOperadores(numero){
 
 function mostrarNoDisplay(numeroTratado){
 
-    let numSemFormatacao = display.innerHTML += numeroTratado;
+    let numSemFormatacao = display.innerText += numeroTratado;
     let numComFormatacao = new Intl.NumberFormat().format(numSemFormatacao)
 
-    display.innerHTML = numSemFormatacao
+    display.innerText = numSemFormatacao
 
 }
 
 function calcularOperacao(resultado){
 
-    display.innerHTML = eval(resultado);
+    display.innerText = eval(resultado);
 
 }
 
 function numberLowerCase(){
 
-    if(display.innerHTML.length >= 12){
+    if(display.innerText.length >= 12){
     
         display.classList.add("lowerCase")
     
