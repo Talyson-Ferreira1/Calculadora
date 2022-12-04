@@ -2,27 +2,43 @@ var display = document.querySelector('.display');
 var containerCalculadora = document.querySelector('.container');
 
 
-
 containerCalculadora.addEventListener("click", (botaoClicado)=>{
+
+    let caracter;
 
     if(botaoClicado.target.classList == "display" || botaoClicado.target.classList == "container") return
 
-    let caracter = botaoClicado.target.innerText;
+    if(botaoClicado.target.classList.contains("clearAll")){ 
+
+        caracter = 'clearAll'; 
+        tratamentoDosOperadores(caracter)
+        return 
+    }
+
+    if(botaoClicado.target.classList.contains("delet")){ 
+
+        caracter = 'delete'; 
+        tratamentoDosOperadores(caracter)
+        return 
+    }
+
+    caracter = botaoClicado.target.innerText; 
     
     tratamentoDosOperadores(caracter)
     
 })
 
+
 function tratamentoDosOperadores(numero){
 
     switch (numero) {
-        case 'DEL':
+        case 'delete':
             
             numero = ""
             display.innerText =  display.innerText.substring(0, display.innerText.length -1);  
             return 
                                   
-        case 'AC':
+        case 'clearAll':
             
             numero = ""
             display.innerText = ""
@@ -37,6 +53,8 @@ function tratamentoDosOperadores(numero){
         default:
             break;
     } 
+   
+    console.log( numero.parentElement)
 
     if(display.innerText.length >= 19) return
 
