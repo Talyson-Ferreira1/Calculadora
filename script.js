@@ -49,7 +49,7 @@ function mostrarNoDisplay(numeroTratado){
     let numSemFormatacao = display.innerHTML += numeroTratado;
     let numComFormatacao = new Intl.NumberFormat().format(numSemFormatacao)
 
-    display.innerText = numSemFormatacao
+    display.innerHTML = numSemFormatacao
 
 }
 
@@ -61,7 +61,7 @@ function calcularOperacao(resultado){
 
 function numberLowerCase(){
 
-    if(display.innerText.length >= 12){
+    if(display.innerHTML.length >= 12){
     
         display.classList.add("lowerCase")
     
